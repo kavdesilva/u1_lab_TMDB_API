@@ -22,22 +22,25 @@ const renderList = (movieResult) => {
     for (i = 0; i < movieResult.length; i++){
         let resultGoesHere = document.createElement('p')
         let resultImage = document.createElement('div')
-        let detailsContainer = document.createElement('p')
+        let detailsContainer = document.createElement('div')
         let moreDetails = document.createElement('button')
+        let summary = document.createElement('p')
         movieResults.appendChild(resultImage)
         movieResults.appendChild(resultGoesHere)
         movieResults.appendChild(moreDetails)
         movieResults.appendChild(detailsContainer)
         detailsContainer.classList.add("details")
-        detailsContainer.innerText = `${movieResult[i].overview}\n`
-        resultGoesHere.innerText = `"${movieResult[i].title}":\n`
+        summary.innerText = `${movieResult[i].overview}\n`
+        resultGoesHere.innerText = `"${movieResult[i].title}"\n`
         resultImage.innerHTML = `<img src='https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movieResult[i].poster_path}'>`
         moreDetails.innerText = `More Details`
         moreDetails.addEventListener('click', () => {
-            if (detailsContainer.style.visibility = "collapse"){
-                detailsContainer.style.visibility = "visible"
-            }else if (detailsContainer.style.visibility = "visible"){
-                detailsContainer.style.visibility = "collapse"
+            if (detailsContainer.innerHTML === '') {
+                detailsContainer.appendChild(summary)
+                moreDetails.innerText = 'Less Details'
+            } else {
+                detailsContainer.removeChild(detailsContainer.firstChild)
+                moreDetails.innerText = 'More Details'
             }
         })
     }
