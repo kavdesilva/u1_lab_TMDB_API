@@ -26,10 +26,10 @@ const renderList = (movieResult) => {
         let moreDetails = document.createElement('button')
         movieResults.appendChild(resultImage)
         movieResults.appendChild(resultGoesHere)
+        movieResults.appendChild(moreDetails)
         movieResults.appendChild(detailsContainer)
         detailsContainer.classList.add("details")
-        movieResults.appendChild(moreDetails)
-        detailsContainer.innerText = `${movieResult[i].overview}`
+        detailsContainer.innerText = `${movieResult[i].overview}\n`
         resultGoesHere.innerText = `"${movieResult[i].title}":\n`
         resultImage.innerHTML = `<img src='https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movieResult[i].poster_path}'>`
         moreDetails.innerText = `More Details`
