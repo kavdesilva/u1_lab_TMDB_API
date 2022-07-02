@@ -22,13 +22,27 @@ const renderList = (movieResult) => {
     for (i = 0; i < movieResult.length; i++){
         let resultGoesHere = document.createElement('p')
         let resultImage = document.createElement('div')
+        let detailsContainer = document.createElement('p')
+        let moreDetails = document.createElement('button')
         movieResults.appendChild(resultImage)
         movieResults.appendChild(resultGoesHere)
-        resultGoesHere.innerText = `"${movieResult[i].title}":\n  ${movieResult[i].overview}`
+        movieResults.appendChild(detailsContainer)
+        detailsContainer.classList.add("details")
+        movieResults.appendChild(moreDetails)
+        detailsContainer.innerText = `${movieResult[i].overview}`
+        resultGoesHere.innerText = `"${movieResult[i].title}":\n`
         resultImage.innerHTML = `<img src='https://www.themoviedb.org/t/p/w600_and_h900_bestv2/${movieResult[i].poster_path}'>`
+        moreDetails.innerText = `More Details`
+        moreDetails.addEventListener('click', () => {
+            if (detailsContainer.style.visibility = "collapse"){
+                detailsContainer.style.visibility = "visible"
+            }else if (detailsContainer.style.visibility = "visible"){
+                detailsContainer.style.visibility = "collapse"
+            }
+        })
     }
 }
-
+// ${movieResult[i].overview}
 
 // aladdin image url: https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ykUEbfpkf8d0w49pHh0AD2KrT52.jpg
 
